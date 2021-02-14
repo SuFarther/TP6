@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {switch number}
+     {case 1}1{/case}
+     {case 5}5{/case}
+     {case 10}10{/case}
+     {default/}不存在
+  {/switch}
+  <br/>
+  {switch number}
+     {case 10|20|30}10,20,30均可{/case}
+  {/switch}
+  <br/>
+  {switch $number}
+      {case $id}5{/case}
+  {/switch}
+  <br/>
+  {if $number2>10}大于10{/if}
+  <br/>
+  {if ($number2 >10) OR ($number > 5)}大于10{/if}
+  {if ($number2 >10) AND ($number > 5)}大于10{/if}
+  <br/>
+  {if $number >10}
+    大于10
+  {else/}
+    小于10
+  {/if}
+  <br/>
+  {if $number > 100}
+  大于100
+  {elseif $number > 50}
+   大于50
+  {/else}
+   小于50
+  {/if}
+<!--  {if}标签中的条件判断支持PHP写法，比如函数和对象调用;-->
+  {if strtoupper($name) == 'MR.LEE'}
+     确认李先生
+  {/if}
+  <br/>
+<!--  范围标签:{in}和{notin}，判断值是否存在或不存在指定的数据列表中-->
+  {in name='number' value='10,20,30,40,50'}存在{/in}
+  <br/>
+  {in name='number' value='10,20,30,40,50'}
+      存在数据列表中
+      {else/}
+      不存在数据列表中
+  {/in}
+  <br/>
+<!--  范围标签:{between}和{notbetween}，判断值是否存在或不存在数据区间中;-->
+  {between name='number' value='10,50'}
+      存在数据区间中
+      {else/}
+      不存在数据区间中
+  {/between}
+<!--  4. between中的value只能是两个值，表示一个区间，第三个值会无效;-->
+<!--  5. 区间不但可以表达数字，也可以是字母，比如a-z，A-Z;-->
+  <br/>
+  {present name='user'}存在{/present}
+  <br/>
+  {present name='user'}
+      user 已存在
+      {else/}
+      user 不存在
+  {/present}
+  <br/>
+  {empty  name='username'}有值{/empty}
+  {empty  name='username'}
+      username有值
+      {else/}
+      username没值
+  {/empty}
+  <br/>
+<!--  常量是否定义:{defined}和{notdefined}p判断常量是否定义(是否存在)-->
+  {defined name='PI'} PI 存在
+      {else/}
+      PI 不存在
+  {/defined}
+</body>
+</html>

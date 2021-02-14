@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1" align="center" width="700">
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>邮箱</th>
+        <th>价格</th>
+        <th>创建时间</th>
+    </tr>
+    {foreach $list as $key=>$obj}
+    <tr>
+        <td>{$key}/{$obj->id}</td>
+        <td>{$obj->username}</td>
+        <td>{$obj->gender}</td>
+        <td>{$obj->email}</td>
+        <td>{$obj->price}</td>
+        <td>{$obj->create_time}</td>
+    </tr>
+    {/foreach}
+</table>
+<hr/>
+<table border="1" align="center" width="700">
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>邮箱</th>
+        <th>价格</th>
+        <th>创建时间</th>
+    </tr>
+<!--    volist中的name属性表示数据总集，id属性表示当前循环的数据单条集;-->
+<!--    使用offset属性和length属性从第4条开始显示5条，这里下标从0开始;-->
+<!--    可以使用 eq标签( ) 下节课比较标签的知识点 ，来实现奇数或偶数的筛选数据;-->
+<!--    {volist name="list" id="obj" offset='3' length='5'}-->
+<!--    {volist name="list" id="obj" mod="2"}-->
+<!--    {eq name='mod' value='0'}-->
+    {volist name="list" id="obj"}
+    <tr>
+        <td>{$key}/{$obj->id}</td>
+        <td>{$obj->username}</td>
+        <td>{$obj->gender}</td>
+        <td>{$obj->email}</td>
+        <td>{$obj->price}</td>
+        <td>{$obj->create_time}</td>
+    </tr>
+    {/volist}
+<!--    使用empty属性,可以当没有任何数据的时候,实现输出指定的提示:-->
+<!--    {volist name="list" id="obj" empty="没有数据"}-->
+<!--    使用key = 'k',让索引从1开始计算,不指定就用{$i},指定后失效-->
+<!--    {volist name='list' id='obj' key='k'}-->
+<!--    {$k}-->
+<!--    {/volist}-->
+<br/>
+    {for start='1' end='100' comparison='lt' step='2' name='i'}
+       {$i}
+    {/for}
+</table>
+</body>
+</html>
